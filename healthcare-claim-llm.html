@@ -106,22 +106,25 @@
     <h1>AI and NLP in Healthcare Claim Processing</h1>
   <div id="content">
     <h3>Transformer Architecture</h3>
-    <p>In layman's terms, the Transformer architecture is a type of neural network model designed to handle sequential data, such as natural language text. Unlike traditional recurrent neural networks (RNNs), Transformers rely on self-attention mechanisms and positional encoding to understand the relationships between words in a sequence. This approach allows the model to process input data in parallel, improving the training and inference speed.</p>
+<p>In layman's terms, the Transformer architecture is a type of neural network model designed to handle sequential data, such as natural language text. Unlike traditional recurrent neural networks (RNNs), Transformers rely on self-attention mechanisms and positional encoding to understand the relationships between words in a sequence. This approach allows the model to process input data in parallel, improving the training and inference speed.</p>
 
-    <p>The self-attention mechanism helps the Transformer to weigh the importance of each word in a sequence relative to the others. This is crucial for understanding the context and meaning of a sentence. Positional encoding is another essential component of the Transformer, which adds information about the position of each word in the sequence to the input embeddings. This enables the model to capture the order of the words, which is important for understanding the meaning of a sentence.</p>
+<p>Positional encoding is an essential component of the Transformer, which adds information about the position of each word in the sequence to the input embeddings. This enables the model to capture the order of the words, which is important for understanding the meaning of a sentence.</p>
 
-    <p>The Transformer architecture was introduced by Vaswani et al. in their 2017 paper, <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention is All You Need"</a>. The architecture has since become the foundation for many state-of-the-art natural language processing models, such as BERT, GPT, and T5.</p>
+<p>The self-attention mechanism helps the Transformer to weigh the importance of each word in a sequence relative to the others. For example, imagine we have a sentence: "The cat sat on the mat." When processing the word "sat," the self-attention mechanism will consider the relationship between "sat" and other words in the sentence, such as "cat" and "mat." In terms of math, this is achieved through matrix multiplication between input word embeddings (e.g., Word2Vec) and learned attention weights. This is crucial for understanding the context and meaning of a sentence.</p>
 
-    <figure>
-      <div class="mermaid">
-        graph TD
-          A[Input Embeddings] --> B[Self-Attention]
-          B --> C[Positional Encoding]
-          C --> D[Feed Forward Neural Network]
-          D --> E[Output]
-      </div>
-      <figcaption>Figure 1 - Simplified Transformer Architecture</figcaption>
-    </figure>
+<p>The Transformer architecture was introduced by Vaswani et al. in their 2017 paper, <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention is All You Need"</a>. The architecture has since become the foundation for many state-of-the-art natural language processing models, such as BERT, GPT, and T5.</p>
+
+<figure>
+  <div class="mermaid">
+    graph TD
+      A[Input Embeddings] --> B[Positional Encoding]
+      B --> C[Self-Attention]
+      C --> D[Feed Forward Neural Network]
+      D --> E[Output]
+  </div>
+  <figcaption>Figure 1 - Simplified Transformer Architecture</figcaption>
+</figure>
+
 
     <h3>Healthcare Claim Processing Example</h3>
     <p>AI and NLP technologies can be applied to healthcare claim processing to improve efficiency, accuracy, and reduce costs. Automating various aspects of the claim processing workflow can help streamline the process and minimize the time spent on manual tasks. Here are some potential applications of AI and NLP in healthcare claim processing:</p>
