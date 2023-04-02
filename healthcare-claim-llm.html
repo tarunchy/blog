@@ -4,26 +4,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
-  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-  <title>AI and NLP in Healthcare Claim Processing</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
+  <title>Building a Successful Cloud Strategy: Start with Automation and Infrastructure as Code</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  crossorigin="anonymous">
 
+  <script src="https://unpkg.com/mermaid@8.13.5/dist/mermaid.min.js"></script>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'linear',
+        arrowMarkerAbsolute: true
+      }
+    });
+  </script>
+  
+  <style>
+.author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  border-top: 1px solid #ccc;
+}
+
+.author-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.author-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.author-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.author-description {
+  text-align: center;
+  max-width: 500px;
+}
+
+.author-links {
+  text-align: center;
+}
+
+.linkedin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0077b5;
+}
+
+.linkedin-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+
+figure {
+  margin: 20px 0;
+  text-align: center;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+    /* General styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+  
+    /* Header styles */
+    header {
+      padding: 20px;
+      background-color: #1e88e5;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
     h1 {
+      margin-bottom: 5px;
+      font-size: 2.7rem;
+    }
+  
+    h2 {
+      margin-top: 0;
+      padding: 10px;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+  
+    /* Article styles */
+    article {
+      padding: 30px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+  
+    section {
+      margin-bottom: 40px;
+    }
+  
+    h3 {
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      font-weight: 500;
+      border-bottom: 2px solid #1e88e5;
+      padding-bottom: 10px;
+    }
+  
+    h4 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  
+    p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+  
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+  
+    li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+  
+    .mermaid {
+      margin: 20px 0;
       text-align: center;
     }
-
-    #content {
-      width: 80%;
-      margin: auto;
-    }
   </style>
-  <script>
-    mermaid.initialize({ startOnLoad: true });
-  </script>
+  
+  
+  
+
 </head>
 
 <body>
@@ -45,8 +192,9 @@
 
     <p>By incorporating AI and NLP technologies into healthcare claim processing, you can build solutions that improve efficiency, reduce costs, and minimize the risk of errors and fraud. It is essential to ensure that the models are trained on accurate and up-to-date healthcare claim data and comply with relevant regulations and privacy requirements.</p>
 
-    <div class="mermaid">
-      graph LR
+     <figure>
+            <div class="mermaid">
+      graph TD
       A[Data Extraction and Structuring] --> B[Automated Claim Validation]
       B --> C[Fraud Detection]
       B --> D[Predictive Analytics]
@@ -54,7 +202,9 @@
             D --> E
       E --> F[Efficient Claim Processing]
 
-    </div>
+     </div>
+            <figcaption>Figure 1 - Health Care Claim Processing using LLM</figcaption>
+    </figure>
   </div>
 </body>
 
