@@ -112,6 +112,30 @@
 
 <p>The self-attention mechanism helps the Transformer to weigh the importance of each word in a sequence relative to the others. For example, imagine we have a sentence: "The cat sat on the mat." When processing the word "sat," the self-attention mechanism will consider the relationship between "sat" and other words in the sentence, such as "cat" and "mat." In terms of math, this is achieved through matrix multiplication between input word embeddings (e.g., Word2Vec) and learned attention weights. This is crucial for understanding the context and meaning of a sentence.</p>
 
+<p>Here's a simple example of how self-attention can be implemented in Python:</p>
+<pre>
+import numpy as np
+
+# Example input word embeddings (3 words with 4-dimensional embeddings)
+input_embeddings = np.array([
+    [0.1, 0.2, 0.3, 0.4],
+    [0.5, 0.6, 0.7, 0.8],
+    [0.9, 1.0, 1.1, 1.2]
+])
+
+# Example attention weights (3x3 matrix)
+attention_weights = np.array([
+    [0.8, 0.1, 0.1],
+    [0.1, 0.8, 0.1],
+    [0.1, 0.1, 0.8]
+])
+
+# Compute the self-attention output by matrix multiplication
+self_attention_output = np.matmul(attention_weights, input_embeddings)
+
+print("Self-attention output:")
+print(self_attention_output)
+</pre>
 <p>The Transformer architecture was introduced by Vaswani et al. in their 2017 paper, <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention is All You Need"</a>. The architecture has since become the foundation for many state-of-the-art natural language processing models, such as BERT, GPT, and T5.</p>
 
 <figure>
@@ -124,6 +148,7 @@
   </div>
   <figcaption>Figure 1 - Simplified Transformer Architecture</figcaption>
 </figure>
+
 
 
     <h3>Healthcare Claim Processing Example</h3>
