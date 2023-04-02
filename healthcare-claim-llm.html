@@ -131,9 +131,15 @@
       D2 --> D3[...]
       D3 --> D4[Decoder Layer 6]
       D4 --> E[Output]
+      E --> RLHF1[Reinforcement Learning (RL)]
+      RLHF1 --> RLHF2[Human Feedback]
+      RLHF2 --> RLHF3[Update Model]
+      RLHF3 --> RLHF4[Iterative Process]
+      RLHF4 --> E
   </div>
-  <figcaption>Figure 1 - Simplified Transformer Architecture with Encoder and Decoder Layers</figcaption>
+  <figcaption>Figure 1 - Detailed Transformer Architecture with Encoder and Decoder Layers and RLHF</figcaption>
 </figure>
+
 
 
 
