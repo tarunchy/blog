@@ -108,46 +108,33 @@
     <h3>Transformer Architecture</h3>
 <p>In layman's terms, the Transformer architecture is a type of neural network model designed to handle sequential data, such as natural language text. Unlike traditional recurrent neural networks (RNNs), Transformers rely on self-attention mechanisms and positional encoding to understand the relationships between words in a sequence. This approach allows the model to process input data in parallel, improving the training and inference speed.</p>
 
-<p>Positional encoding is an essential component of the Transformer, which adds information about the position of each word in the sequence to the input embeddings. This enables the model to capture the order of the words, which is important for understanding the meaning of a sentence.</p>
+<p>To convert each word in a sentence to a vector representation, word embeddings are used. Word embeddings are dense vector representations that capture the meaning and context of a word in a high-dimensional space. One popular method for generating word embeddings is Word2Vec, which creates embeddings by learning from a large corpus of text data.</p>
 
-<p>The self-attention mechanism helps the Transformer to weigh the importance of each word in a sequence relative to the others. For example, imagine we have a sentence: "The cat sat on the mat." When processing the word "sat," the self-attention mechanism will consider the relationship between "sat" and other words in the sentence, such as "cat" and "mat." In terms of math, this is achieved through matrix multiplication between input word embeddings (e.g., Word2Vec) and learned attention weights. This is crucial for understanding the context and meaning of a sentence.</p>
+<p>Initially, the Transformer model is assigned random weights, which are updated during the training process using backpropagation and gradient descent optimization techniques. In the original paper by Vaswani et al., the Transformer architecture consists of 6 encoder layers and 6 decoder layers, with each layer having self-attention mechanisms and feed-forward neural networks.</p>
 
-<p>Here's a simple example of how self-attention can be implemented in Python:</p>
-<pre>
-import numpy as np
+<p>The self-attention mechanism helps the Transformer weigh the importance of each word in a sequence relative to the others. For example, given the sentence "The cat sat on the mat", the self-attention mechanism can calculate the relevance of the word "cat" to each other word in the sentence. This is done by computing the dot product between the word embeddings and applying a softmax function to obtain attention scores. These scores are then multiplied with the word embeddings, and the results are summed to obtain the final output for the self-attention layer.</p>
 
-# Example input word embeddings (3 words with 4-dimensional embeddings)
-input_embeddings = np.array([
-    [0.1, 0.2, 0.3, 0.4],
-    [0.5, 0.6, 0.7, 0.8],
-    [0.9, 1.0, 1.1, 1.2]
-])
+<p>Positional encoding is another essential component of the Transformer, which adds information about the position of each word in the sequence to the input embeddings. This enables the model to capture the order of the words, which is important for understanding the meaning of a sentence.</p>
 
-# Example attention weights (3x3 matrix)
-attention_weights = np.array([
-    [0.8, 0.1, 0.1],
-    [0.1, 0.8, 0.1],
-    [0.1, 0.1, 0.8]
-])
-
-# Compute the self-attention output by matrix multiplication
-self_attention_output = np.matmul(attention_weights, input_embeddings)
-
-print("Self-attention output:")
-print(self_attention_output)
-</pre>
 <p>The Transformer architecture was introduced by Vaswani et al. in their 2017 paper, <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention is All You Need"</a>. The architecture has since become the foundation for many state-of-the-art natural language processing models, such as BERT, GPT, and T5.</p>
 
 <figure>
   <div class="mermaid">
-    graph TD
-      A[Input Embeddings] --> B[Positional Encoding]
-      B --> C[Self-Attention]
-      C --> D[Feed Forward Neural Network]
-      D --> E[Output]
+    graph LR
+      A[Input Embeddings] --> B1[Positional Encoding]
+      B1 --> C1[Encoder Layer 1]
+      C1 --> C2[Encoder Layer 2]
+      C2 --> C3[...]
+      C3 --> C4[Encoder Layer 6]
+      C4 --> D1[Decoder Layer 1]
+      D1 --> D2[Decoder Layer 2]
+      D2 --> D3[...]
+      D3 --> D4[Decoder Layer 6]
+      D4 --> E[Output]
   </div>
-  <figcaption>Figure 1 - Simplified Transformer Architecture</figcaption>
+  <figcaption>Figure 1 - Simplified Transformer Architecture with Encoder and Decoder Layers</figcaption>
 </figure>
+
 
 
 
@@ -169,17 +156,27 @@ print(self_attention_output)
     <p>By incorporating AI and NLP technologies into healthcare claim processing, you can build solutions that improve efficiency, reduce costs, and minimize the risk of errors and fraud. It is essential to ensure that the models are trained on accurate and up-to-date healthcare claim data and comply with relevant regulations and privacy requirements.</p>
 
     <figure>
-      <div class="mermaid">
-        graph TD
-          A[Data Extraction and Structuring] --> B[Automated Claim Validation]
-          B --> C[Fraud Detection]
-          B --> D[Predictive Analytics]
-          C --> E[Automated Claim Adjudication]
-          D --> E
-          E --> F[Efficient Claim Processing]
-      </div>
-      <figcaption>Figure 2 - Healthcare Claim Processing using AI and NLP</figcaption>
-    </figure>
+  <div class="mermaid">
+    graph LR
+      A[Input Embeddings] --> B1[Positional Encoding]
+      B1 --> C1[Encoder Layer 1]
+      C1 --> C2[Encoder Layer 2]
+      C2 --> C3[...]
+      C3 --> C4[Encoder Layer 6]
+      C4 --> D1[Decoder Layer 1]
+      D1 --> D2[Decoder Layer 2]
+      D2 --> D3[...]
+      D3 --> D4[Decoder Layer 6]
+      D4 --> E[Output]
+      E --> RLHF1[Reinforcement Learning (RL)]
+      RLHF1 --> RLHF2[Human Feedback]
+      RLHF2 --> RLHF3[Update Model]
+      RLHF3 --> RLHF4[Iterative Process]
+      RLHF4 --> E
+  </div>
+  <figcaption>Figure 1 - Detailed Transformer Architecture with Encoder and Decoder Layers and RLHF</figcaption>
+</figure>
+
   </div>
 </body>
 
