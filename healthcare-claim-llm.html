@@ -23,72 +23,6 @@
   </script>
   
   <style>
-.author-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
-  border-top: 1px solid #ccc;
-}
-
-.author-bio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.author-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.author-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.author-description {
-  text-align: center;
-  max-width: 500px;
-}
-
-.author-links {
-  text-align: center;
-}
-
-.linkedin-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #0077b5;
-}
-
-.linkedin-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-
-
-figure {
-  margin: 20px 0;
-  text-align: center;
-}
-
-figcaption {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #555;
-}
-
-    /* General styles */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -98,7 +32,6 @@ figcaption {
       color: #333;
     }
   
-    /* Header styles */
     header {
       padding: 20px;
       background-color: #1e88e5;
@@ -120,7 +53,6 @@ figcaption {
       font-weight: 400;
     }
   
-    /* Article styles */
     article {
       padding: 30px;
       background-color: white;
@@ -167,16 +99,32 @@ figcaption {
       text-align: center;
     }
   </style>
-  
-  
-  
 
 </head>
 
 <body>
-  <h1>AI and NLP in Healthcare Claim Processing</h1>
+    <h1>AI and NLP in Healthcare Claim Processing</h1>
   <div id="content">
-    <p>Yes, AI and NLP technologies can be applied to healthcare claim processing to improve efficiency, accuracy, and reduce costs. Automating various aspects of the claim processing workflow can help streamline the process and minimize the time spent on manual tasks. Here are some potential applications of AI and NLP in healthcare claim processing:</p>
+    <h3>Transformer Architecture</h3>
+    <p>In layman's terms, the Transformer architecture is a type of neural network model designed to handle sequential data, such as natural language text. Unlike traditional recurrent neural networks (RNNs), Transformers rely on self-attention mechanisms and positional encoding to understand the relationships between words in a sequence. This approach allows the model to process input data in parallel, improving the training and inference speed.</p>
+
+    <p>The self-attention mechanism helps the Transformer to weigh the importance of each word in a sequence relative to the others. This is crucial for understanding the context and meaning of a sentence. Positional encoding is another essential component of the Transformer, which adds information about the position of each word in the sequence to the input embeddings. This enables the model to capture the order of the words, which is important for understanding the meaning of a sentence.</p>
+
+    <p>The Transformer architecture was introduced by Vaswani et al. in their 2017 paper, <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention is All You Need"</a>. The architecture has since become the foundation for many state-of-the-art natural language processing models, such as BERT, GPT, and T5.</p>
+
+    <figure>
+      <div class="mermaid">
+        graph TD
+          A[Input Embeddings] --> B[Self-Attention]
+          B --> C[Positional Encoding]
+          C --> D[Feed Forward Neural Network]
+          D --> E[Output]
+      </div>
+      <figcaption>Figure 1 - Simplified Transformer Architecture</figcaption>
+    </figure>
+
+    <h3>Healthcare Claim Processing Example</h3>
+    <p>AI and NLP technologies can be applied to healthcare claim processing to improve efficiency, accuracy, and reduce costs. Automating various aspects of the claim processing workflow can help streamline the process and minimize the time spent on manual tasks. Here are some potential applications of AI and NLP in healthcare claim processing:</p>
 
     <ul>
       <li><strong>Data extraction and structuring:</strong> NLP algorithms can be used to extract relevant information from unstructured healthcare claim documents, such as patient demographics, diagnosis codes, procedure codes, and billed amounts. This structured data can then be used for further processing and analysis.</li>
@@ -187,25 +135,26 @@ figcaption {
 
       <li><strong>Predictive analytics:</strong> AI models can be used to predict the likelihood of claim approval or denial based on historical claim data and patterns. This information can help healthcare providers and insurers identify potential issues before submitting claims, reducing the likelihood of denials and improving the overall efficiency of the claim processing workflow.</li>
 
-      <li><strong>Automated claim adjudication:</strong> AI models can be trained to adjudicate healthcare claims by determining the appropriate payment amounts based on the terms of the insurance policy, patient eligibility, and the billed services. This can help expedite the claim processing workflow and reduce the manual effort required to review and process claims.</li>
+            <li><strong>Automated claim adjudication:</strong> AI models can be trained to adjudicate healthcare claims by determining the appropriate payment amounts based on the terms of the insurance policy, patient eligibility, and the billed services. This can help expedite the claim processing workflow and reduce the manual effort required to review and process claims.</li>
     </ul>
 
     <p>By incorporating AI and NLP technologies into healthcare claim processing, you can build solutions that improve efficiency, reduce costs, and minimize the risk of errors and fraud. It is essential to ensure that the models are trained on accurate and up-to-date healthcare claim data and comply with relevant regulations and privacy requirements.</p>
 
-     <figure>
-            <div class="mermaid">
-      graph TD
-      A[Data Extraction and Structuring] --> B[Automated Claim Validation]
-      B --> C[Fraud Detection]
-      B --> D[Predictive Analytics]
-      C --> E[Automated Claim Adjudication]
-            D --> E
-      E --> F[Efficient Claim Processing]
-
-     </div>
-            <figcaption>Figure 1 - Health Care Claim Processing using LLM</figcaption>
+    <figure>
+      <div class="mermaid">
+        graph TD
+          A[Data Extraction and Structuring] --> B[Automated Claim Validation]
+          B --> C[Fraud Detection]
+          B --> D[Predictive Analytics]
+          C --> E[Automated Claim Adjudication]
+          D --> E
+          E --> F[Efficient Claim Processing]
+      </div>
+      <figcaption>Figure 2 - Healthcare Claim Processing using AI and NLP</figcaption>
     </figure>
   </div>
 </body>
 
 </html>
+
+
