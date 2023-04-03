@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Potluck</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-3aeKu/K7VSmg1LdcB9XaKElNjNS7vrmfPp/CowP5my5y5rEB1zQkHNleus5l2jKSwU6ZOsU6MXiU6ZKj7Vw34w=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+      <ul class="nav-menu">
+        <li class="nav-menu-item"><a href="#">Home</a></li>
+        <li class="nav-menu-item"><a href="#">Food</a></li>
+        <li class="nav-menu-item"><a href="#">Logistics</a></li>
+        <li class="nav-menu-item"><a href="#">Programs</a></li>
+        <li class="nav-menu-item"><a href="#">Attendees</a></li>
+      </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="section" id="home">
+      <div class="container">
+        <h1 class="section-title">Welcome to our Potluck!</h1>
+        <p class="section-subtitle">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+          laborum.
+        </p>
+      </div>
+    </section>
+
+    <!-- Food Section -->
+    <section class="section" id="food">
+      <div class="container">
+        <h2>Food</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item</th>
+              <th>Category</th>
+              <th>Adult</th>
+              <th>Children</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Lasagna</td>
+              <td>Main Course</td>
+              <td>2</td>
+              <td>0</td>
+              <td>1 tray</td>
+            </tr>
+            <tr>
+              <td>Jane</td>
+              <td>Green Salad</td>
+              <td>Salad</td>
+              <td>1</td>
+              <td>2</td>
+              <td>1 bowl</td>
+            </tr>
+                      <tr>
+            <td>Mike</td>
+            <td>Pasta Salad</td>
+            <td>Salad</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1 bowl</td>
+          </tr>
+          <tr>
+            <td>Jane</td>
+            <td>Chicken Curry</td>
+            <td>Main Dish</td>
+            <td>4</td>
+            <td>2</td>
+            <td>1 pot</td>
+          </tr>
+          <tr>
+            <td>John</td>
+            <td>Green Beans</td>
+            <td>Side Dish</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1 plate</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="logistics">
+      <h2>Logistics</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Items</th>
+            <th>Owner</th>
+            <th>Cost</th>
+            <th>Inventory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paper plates</td>
+            <td>Jack</td>
+            <td>$5.00</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Napkins</td>
+            <td>Jill</td>
+            <td>$3.00</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Cups</td>
+            <td>Tom</td>
+            <td>$4.50</td>
+            <td>25</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="programs">
+      <h2>Programs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Program Name</th>
+            <th>Description</th>
+            <th>Participant 1</th>
+            <th>Participant 2</th>
+            <th>Participant 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Opening Ceremony</td>
+            <td>Official opening of the event</td>
+            <td>John</td>
+            <td>Jane</td>
+            <td>Mike</td>
+          </tr>
+          <tr>
+            <td>Cultural Program</td>
+            <td>Various cultural performances</td>
+            <td>Tom</td>
+            <td>Jill</td>
+            <td>Jack</td>
+          </tr>
+          <tr>
+            <td>Games</td>
+            <td>Friendly competition</td>
+            <td>Mike</td>
+            <td>Tom</td>
+            <td>John</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+</body>
+</html>
