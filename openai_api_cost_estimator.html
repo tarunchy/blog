@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OpenAI API Cost Estimator</title>
+	<style>
+    body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+#app {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+label {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+textarea {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+select {
+	margin-bottom: 10px;
+}
+
+button {
+	margin-top: 10px;
+}
+
+#result {
+	margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+	<h1>OpenAI API Cost Estimator</h1>
+
+	<div id="app">
+		<form id="api_form">
+			<label for="prompt_input">Prompt:</label>
+			<textarea id="prompt_input" name="prompt_input" rows="5"></textarea>
+
+			<label for="response_size">Estimated Response Size:</label>
+			<select id="response_size" name="response_size">
+				<option value="1">1x</option>
+				<option value="2">2x</option>
+				<option value="3">3x</option>
+				<option value="4">4x</option>
+				<option value="5">5x</option>
+				<option value="6">6x</option>
+				<option value="8">8x</option>
+				<option value="9">9x</option>
+				<option value="10">10x</option>
+				<option value="15">15x</option>
+				<option value="20">20x</option>
+			</select>
+
+			<button type="submit">Estimate Cost</button>
+		</form>
+
+		<div id="result"></div>
+	</div>
+
+	<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById("api_form");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var prompt_input = document.getElementById("prompt_input").value;
+    var response_size = parseInt(document.getElementById("response_size").value);
+
+    // Calculate the token count
+    var token_count = prompt_input.split(/\s+/).length * response_size;
+
+    // Calculate the estimated cost
+    var cost = 0;
+    if (token_count <= 400000) {
+      cost = token_count * 0.0004;
+    } else if (token_count <= 600000) {
+      cost = token_count * 0.0005;
+    } else if (token_count <= 2000000) {
+      cost = token_count * 0.002;
+    } else if (token_count <= 20000000) {
+      cost = token_count * 0.02;
+    } else {
+      cost = token_count * 0.10;
+    }
+
+    // Display the result to the user
+    var result_elem = document.getElementById("result");
+    
+      // Define a function to estimate the cost of OpenAI API call
+  function estimate_cost() {
+    var prompt_text = prompt("Enter the prompt for OpenAI API call:");
+    var prompt_length = prompt_text.length;
+    var response_factor = parseInt(document.getElementById("response_factor").value);
+    if (!response_factor) {
+      result_elem.innerHTML = "Please select a valid response factor.";
+      return;
+    }
+    var response_length = prompt_length * response_factor;
+    var model = document.getElementById("model").value;
+    if (!model) {
+      result_elem.innerHTML = "Please select a valid model.";
+      return;
+    }
+    var cost_per_token = models[model];
+    if (!cost_per_token) {
+      result_elem.innerHTML = "Please select a valid model.";
+      return;
+    }
+    var cost_per_1000_tokens = cost_per_token * 1000;
+    var cost_per_response = (response_length / 1000) * cost_per_1000_tokens;
+    result_elem.innerHTML = "Estimated cost: $" + cost_per_response.toFixed(2);
+  }
+
+  // Define an object to store the cost per token for each model
+  var models = {
+    "Text-Ada": 0.0004,
+    "Text-Babbage": 0.0005,
+    "Text-Curie": 0.002,
+    "Text-Davinci": 0.02,
+    "Code-Cushman": 0.024,
+    "Code-Davinci": 0.10,
+    "ChatGPT (gpt-3.5-turbo)": NaN,
+    "Ada": 0.0004,
+    "Babbage": 0.005,
+    "Curie": 0.02,
+    "Davinci": 0.20
+  };
+
+})();
+
+   
+
+  
+  </script>
+</body>
+</html>
