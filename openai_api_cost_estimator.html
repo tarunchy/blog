@@ -3,49 +3,140 @@
 <head>
 	<title>OpenAI API Cost Estimator</title>
 	<style>
-    body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+    
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    
+        #app {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+        }
+    
+        label {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #555;
+        }
+    
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+    
+        select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    
+        button {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    
+        #result {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
 
-h1 {
-	text-align: center;
-}
+        .info-section {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+        }
 
-#app {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
-}
+        .info-section h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-label {
-	display: inline-block;
-	margin-right: 10px;
-}
+        .info-section p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
 
-textarea {
-	display: block;
-	width: 100%;
-	margin-bottom: 10px;
-}
+        .tips-toggle {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.2s;
+        }
 
-select {
-	margin-bottom: 10px;
-}
+        .tips-toggle:hover {
+            background-color: #0056b3;
+        }
 
-button {
-	margin-top: 10px;
-}
+        .tips-section {
+            display: none;
+            margin-bottom: 20px;
+        }
 
-#result {
-	margin-top: 20px;
-}
-
-  </style>
+        .tips-section p {
+            margin-bottom: 10px;
+        }
+    </style>
+    
 </head>
 <body>
 	<h1>OpenAI API Cost Estimator</h1>
+    <div class="info-section">
+        <h2>About Prompts and OpenAI API</h2>
+        <p>Prompts are the input texts you provide to the OpenAI API. They act as a starting point for the AI model to generate a relevant response. The API uses tokens, which are chunks of text, to process the input and generate the output.</p>
+        <p>OpenAI API works by interpreting the prompts you provide and generating appropriate responses based on the context, model, and other parameters you set. The cost of using the API depends on the number of tokens processed, which include both input and output tokens.</p>
+    </div>
 
 	<div id="app">
 		<form id="api_form">
@@ -73,80 +164,62 @@ button {
 		<div id="result"></div>
 	</div>
 
+    <div class="info-section">
+        <button class="tips-toggle" id="tips-toggle">Show Cost-saving Tips</button>
+        <div class="tips-section" id="tips-section">
+            <h2>Tips to Reduce API Cost</h2>
+            <p>1. Use shorter prompts: Shorter prompts consume fewer tokens, reducing the API cost.</p>
+            <p>2. Limit response length: Use the 'max tokens' parameter to limit the length of the API response, which can help control costs.</p>
+            <p>3. Use lower-cost models: Choose a less expensive model that still meets your needs. Lower-cost models may provide less accurate responses but can save you money.</p>
+            <p>4. Cache and reuse responses: If you make similar API calls frequently, consider caching and reusing responses to avoid making redundant API calls.</p>
+        </div>
+    </div>
+
 	<script>
+
+         // New JavaScript code for the collapsible tips section
+         document.getElementById('tips-toggle').addEventListener('click', function() {
+            var tipsSection = document.getElementById('tips-section');
+            if (tipsSection.style.display === 'none') {
+                tipsSection.style.display = 'block';
+                this.innerHTML = 'Hide Cost-saving Tips';
+            } else {
+                tipsSection.style.display = 'none';
+                this.innerHTML = 'Show Cost-saving Tips';
+            }
+        });
+
+        
   document.addEventListener('DOMContentLoaded', function() {
-  var form = document.getElementById("api_form");
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    var form = document.getElementById("api_form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    var prompt_input = document.getElementById("prompt_input").value;
-    var response_size = parseInt(document.getElementById("response_size").value);
+      var prompt_input = document.getElementById("prompt_input").value;
+      var response_size = parseInt(document.getElementById("response_size").value);
 
-    // Calculate the token count
-    var token_count = prompt_input.split(/\s+/).length * response_size;
+      // Calculate the token count
+      var token_count = prompt_input.split(/\s+/).length * response_size;
 
-    // Calculate the estimated cost
-    var cost = 0;
-    if (token_count <= 400000) {
-      cost = token_count * 0.0004;
-    } else if (token_count <= 600000) {
-      cost = token_count * 0.0005;
-    } else if (token_count <= 2000000) {
-      cost = token_count * 0.002;
-    } else if (token_count <= 20000000) {
-      cost = token_count * 0.02;
-    } else {
-      cost = token_count * 0.10;
-    }
+      // Calculate the estimated cost
+      var cost = 0;
+      if (token_count <= 400000) {
+        cost = token_count * 0.0004;
+      } else if (token_count <= 600000) {
+        cost = token_count * 0.0005;
+      } else if (token_count <= 2000000) {
+        cost = token_count * 0.002;
+      } else if (token_count <= 20000000) {
+        cost = token_count * 0.02;
+      } else {
+        cost = token_count * 0.10;
+      }
 
-    // Display the result to the user
-    var result_elem = document.getElementById("result");
-    
-      // Define a function to estimate the cost of OpenAI API call
-  function estimate_cost() {
-    var prompt_text = prompt("Enter the prompt for OpenAI API call:");
-    var prompt_length = prompt_text.length;
-    var response_factor = parseInt(document.getElementById("response_factor").value);
-    if (!response_factor) {
-      result_elem.innerHTML = "Please select a valid response factor.";
-      return;
-    }
-    var response_length = prompt_length * response_factor;
-    var model = document.getElementById("model").value;
-    if (!model) {
-      result_elem.innerHTML = "Please select a valid model.";
-      return;
-    }
-    var cost_per_token = models[model];
-    if (!cost_per_token) {
-      result_elem.innerHTML = "Please select a valid model.";
-      return;
-    }
-    var cost_per_1000_tokens = cost_per_token * 1000;
-    var cost_per_response = (response_length / 1000) * cost_per_1000_tokens;
-    result_elem.innerHTML = "Estimated cost: $" + cost_per_response.toFixed(2);
-  }
-
-  // Define an object to store the cost per token for each model
-  var models = {
-    "Text-Ada": 0.0004,
-    "Text-Babbage": 0.0005,
-    "Text-Curie": 0.002,
-    "Text-Davinci": 0.02,
-    "Code-Cushman": 0.024,
-    "Code-Davinci": 0.10,
-    "ChatGPT (gpt-3.5-turbo)": NaN,
-    "Ada": 0.0004,
-    "Babbage": 0.005,
-    "Curie": 0.02,
-    "Davinci": 0.20
-  };
-
-})();
-
-   
-
-  
+      // Display the result to the user
+      var result_elem = document.getElementById("result");
+      result_elem.innerHTML = "Estimated cost: $" + cost.toFixed(2);
+    });
+  });
   </script>
 </body>
 </html>
