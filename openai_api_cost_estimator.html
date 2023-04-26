@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OpenAI API Cost Estimator</title>
+	<title>Azure OpenAI API Cost Estimator</title>
 	<style>
         body {
             font-family: Arial, sans-serif;
@@ -131,20 +131,27 @@
     
 </head>
 <body>
-	<h1>OpenAI API Cost Estimator</h1>
-    <div class="info-section">
-        <h2>About Prompts and OpenAI API</h2>
-        <p>Prompts are the input texts you provide to the OpenAI API. They act as a starting point for the AI model to generate a relevant response. The API uses tokens, which are chunks of text, to process the input and generate the output.</p>
-        <p>OpenAI API works by interpreting the prompts you provide and generating appropriate responses based on the context, model, and other parameters you set. The cost of using the API depends on the number of tokens processed, which include both input and output tokens.</p>
-    </div>
-
+	<h1>Azure OpenAI API Cost Estimator</h1>
+    
 	<div id="app">
 		<form id="api_form">
-			<label for="prompt_input">Prompt:</label>
-			<textarea id="prompt_input" name="prompt_input" rows="5"></textarea>
+			<label for="model">Model:</label>
+            <select id="model" name="model">
+                <option value="gpt4">GPT-4</option>
+                <!-- Add more models here as needed -->
+            </select>
 
-			<label for="response_size">Estimated Response Size:</label>
-			<select id="response_size" name="response_size">
+            <label for="context">Context:</label>
+            <select id="context" name="context">
+                <option value="8k">8k</option>
+                <option value="32k">32k</option>
+            </select>
+
+            <label for="prompt_input">Prompt:</label>
+            <textarea id="prompt_input" name="prompt_input" rows="5"></textarea>
+
+            <label for="response_size">Estimated Response Size:</label>
+            <select id="response_size" name="response_size">
 				<option value="1">1x</option>
 				<option value="2">2x</option>
 				<option value="3">3x</option>
@@ -165,61 +172,78 @@
 	</div>
 
     <div class="info-section">
-        <button class="tips-toggle" id="tips-toggle">Show Cost-saving Tips</button>
-        <div class="tips-section" id="tips-section">
-            <h2>Tips to Reduce API Cost</h2>
-            <p>1. Use shorter prompts: Shorter prompts consume fewer tokens, reducing the API cost.</p>
-            <p>2. Limit response length: Use the 'max tokens' parameter to limit the length of the API response, which can help control costs.</p>
-            <p>3. Use lower-cost models: Choose a less expensive model that still meets your needs. Lower-cost models may provide less accurate responses but can save you money.</p>
-            <p>4. Cache and reuse responses: If you make similar API calls frequently, consider caching and reusing responses to avoid making redundant API calls.</p>
-        </div>
+        <h2>Key Terms and Security for OpenAI GPT Models</h2>
+        <p><strong>Prompt:</strong> A prompt is the input text provided to the GPT model, acting as a starting point for generating a relevant response.</p>
+        <p><strong>Temperature:</strong> Temperature is a parameter that controls the randomness of the generated output. Higher values (e.g., 1.0) result in more diverse outputs, while lower values (e.g., 0.1) produce more focused and deterministic outputs.</p>
+        <p><strong>Completion:</strong> A completion is the generated response from the GPT model based on the provided prompt and other parameters.</p>
+        <p><strong>Token:</strong> Tokens are chunks of text used by the GPT model to process input and generate output. Both input and output tokens contribute to the total token count, which affects the API cost.</p>
+        <p><strong>API Key:</strong> An API key is a unique identifier used to authenticate requests to the OpenAI API. It should be kept secret and never shared or exposed in client-side code.</p>
+        <p><strong>Security:</strong> To ensure secure communication with the OpenAI API, use HTTPS and follow best practices for API key management. Store API keys in secure locations, such as environment variables or secret management services, and limit access to authorized users and applications.</p>
+    </div>
+    
+
+    <div class="info-section">
+        
+        <h2>Tips to Reduce API Cost</h2>
+        <p>1. Use shorter prompts: Shorter prompts consume fewer tokens, reducing the API cost.</p>
+        <p>2. Limit response length: Use the 'max tokens' parameter to limit the length of the API response, which can help control costs.</p>
+        <p>3. Use lower-cost models: Choose a less expensive model that still meets your needs. Lower-cost models may provide less accurate responses but can save you money.</p>
+        <p>4. Cache and reuse responses: If you make similar API calls frequently, consider caching and reusing responses to avoid making redundant API calls.</p>
+        
+    </div>
+
+    <div class="info-section">
+        <h2>References</h2>
+        <p><a href="https://azure.microsoft.com/en-us/blog/introducing-gpt4-in-azure-openai-service/" target="_blank">Reference 1 - Introducing GPT-4 in Azure OpenAI Service</a></p>
+        <p><a href="https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/working-with-gpt-4-and-chatgpt-models-on-azure-preview/ba-p/3773595" target="_blank">Reference 2 - Working with GPT-4 and ChatGPT models on Azure</a></p>
+        <p><a href="https://github.com/Azure/openai-samples" target="_blank">Reference 3 - Azure GitHub Samples</a></p>
+        <p><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt?pivots=programming-language-chat-completions" target="_blank">Reference 4 - Learn how to work with the ChatGPT and GPT-4 models</a></p>
+        <p><a href="https://github.com/azure-samples/azure-search-openai-demo" target="_blank">Reference 5 - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search Demo</a></p>
+        <p><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/chatgpt-quickstart?tabs=command-line&pivots=programming-language-python" target="_blank">Reference 6 - Quickstart: Get started using ChatGPT - Using Python</a></p>
+        <p><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/chatgpt-quickstart?tabs=command-line&pivots=rest-api" target="_blank">Reference 7 - Quickstart: Get started using ChatGPT - Using REST API</a></p>
+    
+    
     </div>
 
 	<script>
 
-         // New JavaScript code for the collapsible tips section
-         document.getElementById('tips-toggle').addEventListener('click', function() {
-            var tipsSection = document.getElementById('tips-section');
-            if (tipsSection.style.display === 'none') {
-                tipsSection.style.display = 'block';
-                this.innerHTML = 'Hide Cost-saving Tips';
-            } else {
-                tipsSection.style.display = 'none';
-                this.innerHTML = 'Show Cost-saving Tips';
-            }
-        });
+         
 
-        
-  document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById("api_form");
     form.addEventListener("submit", function(event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      var prompt_input = document.getElementById("prompt_input").value;
-      var response_size = parseInt(document.getElementById("response_size").value);
+    var model = document.getElementById("model").value;
+    var context = document.getElementById("context").value;
+    var prompt_input = document.getElementById("prompt_input").value;
+    var response_size = parseInt(document.getElementById("response_size").value);
 
-      // Calculate the token count
-      var token_count = prompt_input.split(/\s+/).length * response_size;
+    // Calculate the token count
+    var token_count = prompt_input.split(/\s+/).length * response_size;
 
-      // Calculate the estimated cost
-      var cost = 0;
-      if (token_count <= 400000) {
-        cost = token_count * 0.0004;
-      } else if (token_count <= 600000) {
-        cost = token_count * 0.0005;
-      } else if (token_count <= 2000000) {
-        cost = token_count * 0.002;
-      } else if (token_count <= 20000000) {
-        cost = token_count * 0.02;
-      } else {
-        cost = token_count * 0.10;
-      }
+    // Calculate the estimated cost based on model and context selection
+    var cost = 0;
+    if (model === "gpt4" && context === "8k") {
+        cost = token_count * 0.03 / 1000;
+        
+    } else if (model === "gpt4" && context === "32k") {
+        cost = token_count * 0.06 / 1000;
+        
+    } else if (model === "gpt3") {
+        // Update cost calculation for GPT-3 here
+        cost = token_count * 0.002 / 1000;
+        
+    }
+    // Add more models and context-specific costs as needed
 
-      // Display the result to the user
-      var result_elem = document.getElementById("result");
-      result_elem.innerHTML = "Estimated cost: $" + cost.toFixed(2);
-    });
-  });
+    // Display the result to the user
+    var result_elem = document.getElementById("result");
+    result_elem.innerHTML = "Estimated cost: $" + cost.toFixed(6);
+});
+
+});
   </script>
 </body>
 </html>
